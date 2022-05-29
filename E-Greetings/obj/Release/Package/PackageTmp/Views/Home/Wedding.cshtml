@@ -1,0 +1,40 @@
+﻿@model IEnumerable<E_Greetings.Models.tb_cards>
+
+@{
+    ViewBag.Title = "Wedding";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Banner Start -->
+<section id="weddingbanner">
+    <div class="container">
+        <p>Wedding</p>
+    </div>
+</section>
+
+<!-- Card Section Start -->
+<section id="newyearcards" class="mt-100 mb-100">
+    <div class="container">
+        <div class="row">
+            <h3 class="ps-section__title" data-mask="Cards">
+                - Wedding
+            </h3>
+        </div>
+        <div class="row mt-40 mb-40">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 mt-30 mb-30">
+                    <div class="imageDiv">
+                        <a href="@Url.Action("card","Home", new { id = item.ca_id })">
+                            <img src="@item.ca_pic" />
+
+                            <p> @Html.DisplayFor(modelItem => item.ca_name)</p>
+                        </a>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+<!-- Card Section end -->

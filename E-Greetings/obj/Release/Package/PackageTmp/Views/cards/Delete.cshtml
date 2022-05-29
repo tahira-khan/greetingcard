@@ -1,0 +1,50 @@
+﻿@model E_Greetings.Models.tb_cards
+
+@{
+    ViewBag.Title = "Delete Cards";
+    Layout = "~/Views/Shared/_AdminPanel.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+    @Html.DisplayName("Card Name")
+</dt>
+
+<dd>
+    @Html.DisplayFor(model => model.ca_name)
+</dd>
+        <dt>
+            @Html.DisplayName("Card Picture")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ca_pic)
+        </dd>
+
+        
+
+        <dt>
+            @Html.DisplayName("Category")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tb_category.c_categoryname)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

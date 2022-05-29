@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="db_egreetingcardModelStoreContainer" CdmEntityContainer="db_egreetingcardEntities1">
+    <EntitySetMapping Name="tb_cards">
+      <EntityTypeMapping TypeName="db_egreetingcardModel.tb_cards">
+        <MappingFragment StoreEntitySet="tb_cards">
+          <ScalarProperty Name="ca_name" ColumnName="ca_name" />
+          <ScalarProperty Name="ca_fk_c" ColumnName="ca_fk_c" />
+          <ScalarProperty Name="ca_pic" ColumnName="ca_pic" />
+          <ScalarProperty Name="ca_id" ColumnName="ca_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_category">
+      <EntityTypeMapping TypeName="db_egreetingcardModel.tb_category">
+        <MappingFragment StoreEntitySet="tb_category">
+          <ScalarProperty Name="c_categoryname" ColumnName="c_categoryname" />
+          <ScalarProperty Name="c_id" ColumnName="c_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_feedback">
+      <EntityTypeMapping TypeName="db_egreetingcardModel.tb_feedback">
+        <MappingFragment StoreEntitySet="tb_feedback">
+          <ScalarProperty Name="FD_message" ColumnName="FD_message" />
+          <ScalarProperty Name="FD_email" ColumnName="FD_email" />
+          <ScalarProperty Name="FD_reaction" ColumnName="FD_reaction" />
+          <ScalarProperty Name="FD_id" ColumnName="FD_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_roles">
+      <EntityTypeMapping TypeName="db_egreetingcardModel.tb_roles">
+        <MappingFragment StoreEntitySet="tb_roles">
+          <ScalarProperty Name="r_group" ColumnName="r_group" />
+          <ScalarProperty Name="r_id" ColumnName="r_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_userdetails">
+      <EntityTypeMapping TypeName="db_egreetingcardModel.tb_userdetails">
+        <MappingFragment StoreEntitySet="tb_userdetails">
+          <ScalarProperty Name="u_role_id" ColumnName="u_role_id" />
+          <ScalarProperty Name="U_number" ColumnName="U_number" />
+          <ScalarProperty Name="U_country" ColumnName="U_country" />
+          <ScalarProperty Name="U_pass" ColumnName="U_pass" />
+          <ScalarProperty Name="U_email" ColumnName="U_email" />
+          <ScalarProperty Name="U_lname" ColumnName="U_lname" />
+          <ScalarProperty Name="U_fname" ColumnName="U_fname" />
+          <ScalarProperty Name="U_id" ColumnName="U_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_newsletter">
+      <EntityTypeMapping TypeName="db_egreetingcardModel.tb_newsletter">
+        <MappingFragment StoreEntitySet="tb_newsletter">
+          <ScalarProperty Name="n_email" ColumnName="n_email" />
+          <ScalarProperty Name="n_id" ColumnName="n_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_trx">
+      <EntityTypeMapping TypeName="db_egreetingcardModel.tb_trx">
+        <MappingFragment StoreEntitySet="tb_trx">
+          <ScalarProperty Name="tr_fk_u" ColumnName="tr_fk_u" />
+          <ScalarProperty Name="tr_time" ColumnName="tr_time" />
+          <ScalarProperty Name="tr_cardname" ColumnName="tr_cardname" />
+          <ScalarProperty Name="tr_to" ColumnName="tr_to" />
+          <ScalarProperty Name="tr_id" ColumnName="tr_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="db_egreetingcardModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="report_join" FunctionName="db_egreetingcardModel.Store.report_join">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="db_egreetingcardModel.report_join_Result">
+          <ScalarProperty Name="tr_id" ColumnName="tr_id" />
+          <ScalarProperty Name="tr_to" ColumnName="tr_to" />
+          <ScalarProperty Name="tr_cardname" ColumnName="tr_cardname" />
+          <ScalarProperty Name="tr_time" ColumnName="tr_time" />
+          <ScalarProperty Name="U_fname" ColumnName="U_fname" />
+          <ScalarProperty Name="U_lname" ColumnName="U_lname" />
+          <ScalarProperty Name="U_email" ColumnName="U_email" />
+          <ScalarProperty Name="U_number" ColumnName="U_number" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

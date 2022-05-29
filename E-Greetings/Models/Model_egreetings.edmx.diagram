@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="73f9245ab1fc412eb4d82fd8b9d0c31f" Name="Diagram1">
+        <EntityTypeShape EntityType="db_egreetingcardModel.tb_cards" Width="1.5" PointX="5.625" PointY="0.875" />
+        <EntityTypeShape EntityType="db_egreetingcardModel.tb_category" Width="1.5" PointX="3.375" PointY="1" />
+        <EntityTypeShape EntityType="db_egreetingcardModel.tb_feedback" Width="1.5" PointX="5.5" PointY="3.625" />
+        <EntityTypeShape EntityType="db_egreetingcardModel.tb_roles" Width="1.5" PointX="0.875" PointY="3.125" />
+        <AssociationConnector Association="db_egreetingcardModel.FK__tb_cards__ca_fk___1DE57479" />
+        <EntityTypeShape EntityType="db_egreetingcardModel.tb_userdetails" Width="1.5" PointX="3.5" PointY="3.375" />
+        <AssociationConnector Association="db_egreetingcardModel.FK__tb_userde__u_rol__49C3F6B7" />
+        <EntityTypeShape EntityType="db_egreetingcardModel.tb_newsletter" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="db_egreetingcardModel.tb_trx" Width="1.5" PointX="0.875" PointY="5.5" />
+        <AssociationConnector Association="db_egreetingcardModel.FK__tb_trx__tr_fk_u__6C190EBB" />
+        <EntityTypeShape EntityType="db_egreetingcardModel.sysdiagram" Width="1.5" PointX="6.375" PointY="6.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

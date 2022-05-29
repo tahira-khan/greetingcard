@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_egreetingcardModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="db_egreetingcardEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tb_cards" EntityType="db_egreetingcardModel.tb_cards" />
+    <EntitySet Name="tb_category" EntityType="db_egreetingcardModel.tb_category" />
+    <EntitySet Name="tb_feedback" EntityType="db_egreetingcardModel.tb_feedback" />
+    <EntitySet Name="tb_roles" EntityType="db_egreetingcardModel.tb_roles" />
+    <AssociationSet Name="FK__tb_cards__ca_fk___1DE57479" Association="db_egreetingcardModel.FK__tb_cards__ca_fk___1DE57479">
+      <End Role="tb_category" EntitySet="tb_category" />
+      <End Role="tb_cards" EntitySet="tb_cards" />
+    </AssociationSet>
+    <EntitySet Name="tb_userdetails" EntityType="db_egreetingcardModel.tb_userdetails" />
+    <AssociationSet Name="FK__tb_userde__u_rol__49C3F6B7" Association="db_egreetingcardModel.FK__tb_userde__u_rol__49C3F6B7">
+      <End Role="tb_roles" EntitySet="tb_roles" />
+      <End Role="tb_userdetails" EntitySet="tb_userdetails" />
+    </AssociationSet>
+    <EntitySet Name="tb_newsletter" EntityType="db_egreetingcardModel.tb_newsletter" />
+    <EntitySet Name="tb_trx" EntityType="db_egreetingcardModel.tb_trx" />
+    <AssociationSet Name="FK__tb_trx__tr_fk_u__6C190EBB" Association="db_egreetingcardModel.FK__tb_trx__tr_fk_u__6C190EBB">
+      <End Role="tb_userdetails" EntitySet="tb_userdetails" />
+      <End Role="tb_trx" EntitySet="tb_trx" />
+    </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="db_egreetingcardModel.sysdiagram" />
+    <FunctionImport Name="report_join" ReturnType="Collection(db_egreetingcardModel.report_join_Result)" />
+  </EntityContainer>
+  <EntityType Name="tb_cards">
+    <Key>
+      <PropertyRef Name="ca_id" />
+    </Key>
+    <Property Name="ca_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ca_pic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ca_fk_c" Type="Int32" />
+    <NavigationProperty Name="tb_category" Relationship="db_egreetingcardModel.FK__tb_cards__ca_fk___1DE57479" FromRole="tb_cards" ToRole="tb_category" />
+    <Property Name="ca_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tb_category">
+    <Key>
+      <PropertyRef Name="c_id" />
+    </Key>
+    <Property Name="c_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="c_categoryname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tb_cards" Relationship="db_egreetingcardModel.FK__tb_cards__ca_fk___1DE57479" FromRole="tb_category" ToRole="tb_cards" />
+  </EntityType>
+  <EntityType Name="tb_feedback">
+    <Key>
+      <PropertyRef Name="FD_id" />
+    </Key>
+    <Property Name="FD_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FD_reaction" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FD_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FD_message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tb_roles">
+    <Key>
+      <PropertyRef Name="r_id" />
+    </Key>
+    <Property Name="r_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="r_group" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tb_userdetails" Relationship="db_egreetingcardModel.FK__tb_userde__u_rol__49C3F6B7" FromRole="tb_roles" ToRole="tb_userdetails" />
+  </EntityType>
+  <Association Name="FK__tb_cards__ca_fk___1DE57479">
+    <End Type="db_egreetingcardModel.tb_category" Role="tb_category" Multiplicity="0..1" />
+    <End Type="db_egreetingcardModel.tb_cards" Role="tb_cards" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_category">
+        <PropertyRef Name="c_id" />
+      </Principal>
+      <Dependent Role="tb_cards">
+        <PropertyRef Name="ca_fk_c" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tb_userdetails">
+    <Key>
+      <PropertyRef Name="U_id" />
+    </Key>
+    <Property Name="U_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="U_fname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="U_lname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="U_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="U_pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="U_country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="U_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="u_role_id" Type="Int32" />
+    <NavigationProperty Name="tb_roles" Relationship="db_egreetingcardModel.FK__tb_userde__u_rol__49C3F6B7" FromRole="tb_userdetails" ToRole="tb_roles" />
+    <NavigationProperty Name="tb_trx" Relationship="db_egreetingcardModel.FK__tb_trx__tr_fk_u__6C190EBB" FromRole="tb_userdetails" ToRole="tb_trx" />
+  </EntityType>
+  <Association Name="FK__tb_userde__u_rol__49C3F6B7">
+    <End Type="db_egreetingcardModel.tb_roles" Role="tb_roles" Multiplicity="0..1" />
+    <End Type="db_egreetingcardModel.tb_userdetails" Role="tb_userdetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_roles">
+        <PropertyRef Name="r_id" />
+      </Principal>
+      <Dependent Role="tb_userdetails">
+        <PropertyRef Name="u_role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tb_newsletter">
+    <Key>
+      <PropertyRef Name="n_id" />
+    </Key>
+    <Property Name="n_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="n_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tb_trx">
+    <Key>
+      <PropertyRef Name="tr_id" />
+    </Key>
+    <Property Name="tr_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tr_to" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="tr_cardname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="tr_time" Type="DateTime" Precision="3" />
+    <Property Name="tr_fk_u" Type="Int32" />
+    <NavigationProperty Name="tb_userdetails" Relationship="db_egreetingcardModel.FK__tb_trx__tr_fk_u__6C190EBB" FromRole="tb_trx" ToRole="tb_userdetails" />
+  </EntityType>
+  <Association Name="FK__tb_trx__tr_fk_u__6C190EBB">
+    <End Type="db_egreetingcardModel.tb_userdetails" Role="tb_userdetails" Multiplicity="0..1" />
+    <End Type="db_egreetingcardModel.tb_trx" Role="tb_trx" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_userdetails">
+        <PropertyRef Name="U_id" />
+      </Principal>
+      <Dependent Role="tb_trx">
+        <PropertyRef Name="tr_fk_u" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <ComplexType Name="report_join_Result">
+    <Property Type="Int32" Name="tr_id" Nullable="false" />
+    <Property Type="String" Name="tr_to" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="tr_cardname" Nullable="true" />
+    <Property Type="DateTime" Name="tr_time" Nullable="true" Precision="23" />
+    <Property Type="String" Name="U_fname" Nullable="true" />
+    <Property Type="String" Name="U_lname" Nullable="true" />
+    <Property Type="String" Name="U_email" Nullable="true" />
+    <Property Type="String" Name="U_number" Nullable="true" />
+  </ComplexType>
+</Schema>

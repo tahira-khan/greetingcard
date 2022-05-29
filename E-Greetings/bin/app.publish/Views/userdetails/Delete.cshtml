@@ -1,0 +1,75 @@
+﻿@model E_Greetings.Models.tb_userdetails
+
+@{
+    ViewBag.Title = "Delete User";
+    Layout = "~/Views/Shared/_AdminPanel.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tb_userdetails</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("First Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_fname)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Last Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_lname)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Email")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_email)
+        </dd>
+
+        
+
+        <dt>
+            @Html.DisplayName("Country")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_country)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Number")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Role")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tb_roles.r_group)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

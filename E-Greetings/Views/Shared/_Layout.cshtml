@@ -1,0 +1,397 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon">
+    <link href="apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="favicon.png" rel="icon" />
+    <link rel="stylesheet" href="~/css/style-l.css">
+    
+
+    <title>E-Greetings | @ViewBag.Title</title>
+    @*@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")*@
+    <!-- Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow:300,400,700%7CMontserrat:300,400,500,600,700,800,900"
+          rel="stylesheet" />
+    <link rel="stylesheet"
+          href="~/plugins/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/plugins/ps-icon/style.css" />
+    <!-- css Library-->
+    <link rel="stylesheet"
+          href="~/plugins/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet"
+          href="~/plugins/owl-carousel/assets/owl.carousel.css" />
+    <link rel="stylesheet"
+          href="~/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css" />
+    <link rel="stylesheet" href="~/plugins/slick/slick/slick.css" />
+    <link rel="stylesheet"
+          href="~/plugins/bootstrap-select/dist/css/bootstrap-select.min.css" />
+    <link rel="stylesheet"
+          href="~/plugins//Magnific-Popup/dist/magnific-popup.css" />
+    <link rel="stylesheet" href="~/plugins/jquery-ui/jquery-ui.min.css" />
+    <link rel="stylesheet" href="~/plugins/revolution/css/settings.css" />
+    <link rel="stylesheet" href="~/plugins/revolution/css/layers.css" />
+    <link rel="stylesheet" href="~/plugins/revolution/css/navigation.css" />
+    <!-- Custom-->
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+
+    <body class="ps-loading">
+        <main class="ps-main">
+            <div class="header--sidebar"></div>
+            <header class="header">
+                <div class="header__top">
+                    <div class="container-fluid">
+                        <div class="row"></div>
+                    </div>
+                </div>
+                <nav class="navigation">
+                    <div class="container-fluid">
+                        <div class="navigation__column left">
+                            <div class="header__logo">
+                                <a class="ps-logo" href="~/Home/Index">
+                                    <img src="~/images/logo.png" width="100" alt="" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="navigation__column center">
+                            <ul class="main-menu menu">
+                                <li class="menu-item menu-item-has-children dropdown">
+                                    <a href="~/Home/Index">Home</a>
+                                </li>
+                                <li class="menu-item menu-item-has-children dropdown">
+                                    <a href="#">Categories</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item">
+                                            <a href="~/Home/Birthday">Birthday</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="~/Home/Wedding">Wedding</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="~/Home/Newyear">New Year</a>
+                                        </li>
+                                        <li class="menu-item dropdownMenuList">
+                                            <a href="~/Home/Festival">Festivals</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item"><a href="~/Home/About">About Us</a></li>
+                                <li class="menu-item">
+                                    <a href="~/Home/Contact">Contact Us</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="navigation__column right">
+                            <button class="ps-loginRegisterBtn">
+                                @if (Session["User"] != null)
+                                {
+                                    <a href="~/Home/logout">log out</a>
+                                }
+                                else
+                                {
+                                <a href="~/Home/Login_Register"> login & register</a>
+                                }
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <!-- Feedback Form -->
+            <!-- Button trigger modal -->
+            <button type="button"
+                    class="modalButton"
+                    data-toggle="modal"
+                    data-target="#exampleModalCenter">
+                Feedback
+            </button>
+
+            <!-- Modal -->
+            @using (Html.BeginForm("feedback", "Home", FormMethod.Post)) { 
+            <div class="modal fade"
+                 id="exampleModalCenter"
+                 tabindex="-1"
+                 role="dialog"
+                 aria-labelledby="exampleModalCenterTitle"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-label="Close"
+                                    style="font-size: 30px;
+                color: black;">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <img src="~/images/logo.png" class="mx-auto" style="margin: 0 auto;display: block;" width="100" alt="">
+                            <h1 class="text-center">Your feedback</h1>
+                        </div>
+                        <div class="modal-body">
+                            <form action="product-listing.html" method="post">
+                                <div class="control-group question rating -group rating-group-1  "
+                                     data-index="0"
+                                     id="rating-1123"
+                                     style="display: block;">
+                                    <label tabindex="0">What is your opinion of this page?</label><span tabindex="0"
+                                                                                                        aria-label="This question is required"
+                                                                                                        class="required-mark">*</span>
+                                    <div class="rating-group rating-group emoji emoji-group rating">
+                                        <div class="choice-row">
+                                            <div class="rating-choice">
+                                                <input type="radio"
+                                                       name="reaction"
+                                                       value="1"
+                                                       id="rating-1123_0"
+                                                       aria-label="anger" /><label for="rating-1123_0" class="emoji-angry">
+                                                    <span><img src="~/images/anger.png" class="" alt="" /></span>
+                                                </label>
+                                            </div>
+                                            <div class="rating-choice">
+                                                <input type="radio"
+                                                       name="reaction"
+                                                       value="2"
+                                                       id="rating-1123_1"
+                                                       aria-label="Angry" /><label for="rating-1123_1" class="emoji-angry">
+                                                    <span><img src="~/images/angry2.png" class="" alt="" /></span>
+                                                </label>
+                                            </div>
+                                            <div class="rating-choice">
+                                                <input type="radio"
+                                                       name="reaction"
+                                                       value="3"
+                                                       id="rating-1123_2"
+                                                       aria-label="Angry" /><label for="rating-1123_2" class="emoji-angry">
+                                                    <span><img src="~/images/angerless.png" class="" alt="" /></span>
+                                                </label>
+                                            </div>
+                                            <div class="rating-choice">
+                                                <input type="radio"
+                                                       name="reaction"
+                                                       value="4"
+                                                       id="rating-1123_3"
+                                                       aria-label="Angry" /><label for="rating-1123_3" class="emoji-angry">
+                                                    <span><img src="~/images/smile2.png" class="" alt="" /></span>
+                                                </label>
+                                            </div>
+                                            <div class="rating-choice">
+                                                <input type="radio"
+                                                       name="reaction"
+                                                       value="5"
+                                                       id="rating-1123_4"
+                                                       aria-label="Angry" /><label for="rating-1123_4" class="emoji-angry">
+                                                    <span><img src="~/images/emoji.png" class="" alt="" /></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email<span>*</span></label>
+                                    <input class="form-control" type="email" name="FD_email" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Your message<span>*</span></label>
+                                    <textarea class="form-control" name="FD_message" rows="4" placeholder="Please give your feedback here"></textarea>
+                                </div>
+                                <div class="form-group text-center">
+                                    <button class="ps-btn" style="
+                  padding: 10px 30px;">
+                                        Submit<i class="fa fa-angle-right"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+            <!-- Modal End -->
+
+            <div>
+                @RenderBody()
+            </div>
+
+            <!--Footer Start-->
+            <div class="ps-subscribe">
+                <div class="ps-container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <h3 class="text-center">
+                                <i class="fa fa-envelope"></i>Subscribe to Newsletter
+                            </h3>
+                        </div>
+                        
+                        <div class="col-md-12 col-sm-12 ">
+                           
+                            @using (Html.BeginForm("subscribe", "Home", FormMethod.Post, new { @class = "ps-subscribe__form" }))
+                            {
+                                <input class="form-control" type="email" placeholder="" name="n_email" />
+                                <button type="submit">Subscribe now</button>
+                            }
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="ps-footer bg--cover"
+                 data-background="~/images/slider/christmasbanner.png">
+                <div class="ps-footer__content">
+                    <div class="ps-container">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
+                                <aside class="ps-widget--footer ps-widget--info">
+                                    <header>
+                                        <a class="ps-logo" href="~/Home/Index">
+                                            <img src="~/images/logo-white.png" alt="" />
+                                        </a>
+                                    </header>
+                                    <footer>
+                                        <p>
+                                            E-greeting offers high quality templates and online design tools that allow our users to customize and produce attractive Invitations, Greeting Cards, and eCards -
+                                            You can print, download, or send online.
+                                        </p>
+
+                                    </footer>
+                                </aside>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
+                                <aside class="ps-widget--footer ps-widget--info">
+                                    <header>
+                                        <h3 class="ps-widget__title">Address</h3>
+                                    </header>
+                                    <footer>
+                                        <p>
+                                            <strong>Clifton, karachi.</strong>
+                                        </p>
+                                        <p>
+                                            Email:
+                                            <a href="mailto:admin@admin.com">admin@greeting.com</a>
+                                        </p>
+                                        <p>Phone: +92 123123123</p>
+                                    </footer>
+                                </aside>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 ">
+                                <aside class="ps-widget--footer ps-widget--link">
+                                    <header>
+                                        <h3 class="ps-widget__title">Cards</h3>
+                                    </header>
+                                    <footer>
+                                        <ul class="ps-list--line">
+                                            <li><a href="~/Home/Birthday">Birthday</a></li>
+                                            <li><a href="~/Home/Wedding">Wedding</a></li>
+                                            <li><a href="~/Home/Newyear">New Year</a></li>
+                                            <li><a href="~/Home/Festival">Festivals</a></li>
+                                        </ul>
+                                    </footer>
+                                </aside>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 ">
+                                <aside class="ps-widget--footer ps-widget--link">
+                                    <header>
+                                        <h3 class="ps-widget__title">Get Help</h3>
+                                    </header>
+                                    <footer>
+                                        <ul class="ps-list--line">
+                                            <li><a href="~/Home/About">About Us</a></li>
+                                            <li><a href="~/Home/Contact">Contact Us</a></li>
+                                            <li><a href="~/Home/Login_Register">Login / Register</a></li>
+                                        </ul>
+                                    </footer>
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ps-footer__copyright">
+                    <div class="ps-container">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                <p>
+                                    &copy; <a href="#">E-Greetings</a>, Inc. All rights Resevered.
+                                    Design by <a href="#">Aptech student</a>
+                                </p>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                <ul class="ps-social">
+                                    <li>
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-instagram"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!--Footer End-->
+        <!-- JS Library-->
+        <script type="text/javascript"
+                src=@Url.Content("~/plugins/jquery/dist/jquery.min.js")></script>
+        <script type="text/javascript"
+                src=@Url.Content("~/plugins/bootstrap/dist/js/bootstrap.min.js")></script>
+        <script type="text/javascript"
+                src=@Url.Content("~/plugins/jquery-bar-rating/dist/jquery.barrating.min.js")></script>
+        <script type="text/javascript"
+                src=@Url.Content("~/plugins/owl-carousel/owl.carousel.min.js")></script>
+        <script type="text/javascript" src=@Url.Content("~/plugins/gmap3.min.js")></script>
+        <script type="text/javascript" src=@Url.Content("~/plugins/imagesloaded.pkgd.js")></script>
+        <script type="text/javascript" src=@Url.Content("~/plugins/isotope.pkgd.min.js")></script>
+        <script type="text/javascript"
+                src=@Url.Content("~/plugins/bootstrap-select/dist/js/bootstrap-select.min.js")></script>
+        <script type="text/javascript"
+                src=@Url.Content("~/plugins/jquery.matchHeight-min.js")></script>
+        <script type="text/javascript"
+                src=@Url.Content("~/plugins/slick/slick/slick.min.js")></script>
+        <script type="text/javascript"
+                src=@Url.Content("~/plugins/elevatezoom/jquery.elevatezoom.js")></script>
+        <script type="text/javascript"
+                src=@Url.Content("~/plugins/Magnific-Popup/dist/jquery.magnific-popup.min.js")></script>
+        <script type="text/javascript"
+                src=@Url.Content("~/plugins/jquery-ui/jquery-ui.min.js")></script>
+        <script type="text/javascript"
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx39JFH5nhxze1ZydH-Kl8xXM3OK4fvcg&amp;region=GB"></script>
+        <script type="text/javascript"
+                src=@Url.Content("~/plugins/revolution/js/jquery.themepunch.tools.min.js")></script>
+        <script type="text/javascript"
+                src=@Url.Content("~/plugins/revolution/js/jquery.themepunch.revolution.min.js")></script>
+        <script type="text/javascript"
+                src=@Url.Content("~/plugins/revolution/js/extensions/revolution.extension.video.min.js")></script>
+        <script type="text/javascript"
+                src=@Url.Content("~/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js")></script>
+        <script type="text/javascript"
+                src=@Url.Content("~/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js")></script>
+        <script type="text/javascript"
+                src=@Url.Content("~/plugins/revolution/js/extensions/revolution.extension.navigation.min.js")></script>
+        <script type="text/javascript"
+                src=@Url.Content("~/plugins/revolution/js/extensions/revolution.extension.parallax.min.js")></script>
+        <script type="text/javascript"
+                src=@Url.Content("~/plugins/revolution/js/extensions/revolution.extension.actions.min.js")></script>
+        <!-- Custom scripts-->
+        <script type="text/javascript" src=@Url.Content("~/js/main.js")></script>
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <!--<script src="~/js/jquery-3.4.1.min.js"></script>-->
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+        <script>
+    $('img').click(function (e) {
+    $('img.addBorder').not(e.target).removeClass('addBorder');
+    $(this).toggleClass('addBorder');
+});
+        </script>
+    </body>
+</html>

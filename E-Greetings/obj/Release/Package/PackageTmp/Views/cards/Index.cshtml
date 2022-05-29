@@ -1,0 +1,64 @@
+﻿@model IEnumerable<E_Greetings.Models.tb_cards>
+
+@{
+    ViewBag.Title = "View Cards";
+    Layout = "~/Views/Shared/_AdminPanel.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div style="text-align:right;" class="search-form">
+    @using (Html.BeginForm("Index", "cards", FormMethod.Post))
+    {
+        <input style="
+  width: 140px;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;" type="text" name="search" />
+    <button style="margin-bottom:4px;" type="submit" class="btn btn-default">Search</button>
+    }
+</div>
+<table class="table">
+    <tr >
+        <th>
+            @Html.DisplayName("Card Name")
+        </th>
+        <th>
+            @Html.DisplayName("Card Picture")
+        </th>
+        
+        <th>
+            @Html.DisplayName("Category")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ca_name)
+        </td>
+        <td>
+            <img src="@item.ca_pic" width="200" height="200" />
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.tb_category.c_categoryname)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ca_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ca_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ca_id })
+        </td>
+    </tr>
+}
+
+</table>

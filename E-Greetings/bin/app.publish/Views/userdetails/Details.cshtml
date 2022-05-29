@@ -1,0 +1,66 @@
+﻿@model E_Greetings.Models.tb_userdetails
+
+@{
+    ViewBag.Title = "User Details";
+    Layout = "~/Views/Shared/_AdminPanel.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tb_userdetails</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("First Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_fname)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Last Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_lname)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Email")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Password")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.U_country)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Number")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Role")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tb_roles.r_group)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.U_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

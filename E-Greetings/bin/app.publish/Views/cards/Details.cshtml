@@ -1,0 +1,44 @@
+﻿@model E_Greetings.Models.tb_cards
+
+@{
+    ViewBag.Title = "Card Details";
+    Layout = "~/Views/Shared/_AdminPanel.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+       @Html.DisplayName("Card Name")
+     </dt>
+
+    <dd>
+    @Html.DisplayFor(model => model.ca_name)
+   </dd>
+        <dt>
+            @Html.DisplayName("Card Picture")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ca_pic)
+        </dd>
+
+        
+
+        <dt>
+            @Html.DisplayName("Category")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tb_category.c_categoryname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ca_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

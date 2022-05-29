@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_egreetingcardModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tb_cards">
+    <Key>
+      <PropertyRef Name="ca_id" />
+    </Key>
+    <Property Name="ca_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ca_pic" Type="varchar(max)" />
+    <Property Name="ca_fk_c" Type="int" />
+    <Property Name="ca_name" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="tb_category">
+    <Key>
+      <PropertyRef Name="c_id" />
+    </Key>
+    <Property Name="c_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="c_categoryname" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="tb_feedback">
+    <Key>
+      <PropertyRef Name="FD_id" />
+    </Key>
+    <Property Name="FD_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FD_reaction" Type="varchar(max)" />
+    <Property Name="FD_email" Type="varchar(max)" />
+    <Property Name="FD_message" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="tb_newsletter">
+    <Key>
+      <PropertyRef Name="n_id" />
+    </Key>
+    <Property Name="n_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="n_email" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="tb_roles">
+    <Key>
+      <PropertyRef Name="r_id" />
+    </Key>
+    <Property Name="r_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="r_group" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="tb_trx">
+    <Key>
+      <PropertyRef Name="tr_id" />
+    </Key>
+    <Property Name="tr_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tr_to" Type="varchar" MaxLength="255" />
+    <Property Name="tr_cardname" Type="varchar(max)" />
+    <Property Name="tr_time" Type="datetime" />
+    <Property Name="tr_fk_u" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_userdetails">
+    <Key>
+      <PropertyRef Name="U_id" />
+    </Key>
+    <Property Name="U_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="U_fname" Type="nvarchar(max)" />
+    <Property Name="U_lname" Type="nvarchar(max)" />
+    <Property Name="U_email" Type="varchar(max)" />
+    <Property Name="U_pass" Type="varchar(max)" />
+    <Property Name="U_country" Type="varchar(max)" />
+    <Property Name="U_number" Type="varchar(max)" />
+    <Property Name="u_role_id" Type="int" />
+  </EntityType>
+  <Association Name="FK__tb_cards__ca_fk___36B12243">
+    <End Role="tb_category" Type="Self.tb_category" Multiplicity="0..1" />
+    <End Role="tb_cards" Type="Self.tb_cards" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_category">
+        <PropertyRef Name="c_id" />
+      </Principal>
+      <Dependent Role="tb_cards">
+        <PropertyRef Name="ca_fk_c" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_trx__tr_fk_u__6C190EBB">
+    <End Role="tb_userdetails" Type="Self.tb_userdetails" Multiplicity="0..1" />
+    <End Role="tb_trx" Type="Self.tb_trx" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_userdetails">
+        <PropertyRef Name="U_id" />
+      </Principal>
+      <Dependent Role="tb_trx">
+        <PropertyRef Name="tr_fk_u" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_userde__u_rol__49C3F6B7">
+    <End Role="tb_roles" Type="Self.tb_roles" Multiplicity="0..1" />
+    <End Role="tb_userdetails" Type="Self.tb_userdetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_roles">
+        <PropertyRef Name="r_id" />
+      </Principal>
+      <Dependent Role="tb_userdetails">
+        <PropertyRef Name="u_role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="report_join" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="db_egreetingcardModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_cards" EntityType="Self.tb_cards" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_category" EntityType="Self.tb_category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_feedback" EntityType="Self.tb_feedback" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_newsletter" EntityType="Self.tb_newsletter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_roles" EntityType="Self.tb_roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_trx" EntityType="Self.tb_trx" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_userdetails" EntityType="Self.tb_userdetails" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tb_cards__ca_fk___36B12243" Association="Self.FK__tb_cards__ca_fk___36B12243">
+      <End Role="tb_category" EntitySet="tb_category" />
+      <End Role="tb_cards" EntitySet="tb_cards" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_trx__tr_fk_u__6C190EBB" Association="Self.FK__tb_trx__tr_fk_u__6C190EBB">
+      <End Role="tb_userdetails" EntitySet="tb_userdetails" />
+      <End Role="tb_trx" EntitySet="tb_trx" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_userde__u_rol__49C3F6B7" Association="Self.FK__tb_userde__u_rol__49C3F6B7">
+      <End Role="tb_roles" EntitySet="tb_roles" />
+      <End Role="tb_userdetails" EntitySet="tb_userdetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

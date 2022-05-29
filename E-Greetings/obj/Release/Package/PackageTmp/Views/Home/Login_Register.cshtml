@@ -1,0 +1,123 @@
+﻿@model E_Greetings.Models.tb_userdetails
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E-Greetings - Login/Registration</title>
+    <link rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon">
+   
+
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel="stylesheet" href="~/css/style-l.css">
+    <style>
+        .text-danger {
+  color: #dc3545 !important;
+}
+        .invalid{
+            margin-left:185px;
+            margin-top:20px;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- partial:index.partial.html -->
+    <p class="tip">                </p>
+    <div class="cont">
+        @using (Html.BeginForm("Login", "Home", FormMethod.Post)) { 
+        <div class="form sign-in">
+            <h2>Welcome back,</h2>
+            <label>
+                <span>Email</span>
+                <input type="email" name="email" />
+                @Html.ValidationMessageFor(model => model.U_email, "", new { @class = "text-danger" })
+            </label>
+            <label>
+                <span>Password</span>
+                <input type="password" name="password" />
+                @Html.ValidationMessageFor(model => model.U_pass, "", new { @class = "text-danger" })
+            </label>
+            <p class="text-danger invalid"> @TempData["invalid"] </p>
+            <button type="submit" class="submit">Sign In</button>
+            
+        </div>
+        }
+        <div class="sub-cont">
+            <div class="img">
+                <div class="img__text m--up">
+                    <h2>New here?</h2>
+                    <p>Sign up and discover our great cards!</p>
+                </div>
+                <div class="img__text m--in">
+                    <h2>One of us?</h2>
+                    <p>If you already has an account, just sign in. We've missed you!</p>
+                </div>
+                <div class="img__btn">
+                    <span class="m--up">Sign Up</span>
+                    <span class="m--in">Sign In</span>
+                </div>
+            </div>
+           
+@using (Html.BeginForm("Login_Register", "Home", FormMethod.Post)) { 
+            <div class="form sign-up">
+                <h2>Time to feel like home,</h2>
+                <label class="left">
+                    <span>First Name</span>
+                    <input type="text" name="U_fname" />
+                    @Html.ValidationMessageFor(model=>model.U_fname, "", new { @class = "text-danger" })
+                </label>
+                <label class="right">
+                    <span>Last Name</span>
+                    <input type="text" name="U_lname" />
+                    @Html.ValidationMessageFor(model => model.U_lname, "", new { @class = "text-danger" })
+                </label>
+                <label class="left">
+                    <span>Email</span>
+                    <input type="email" name="U_email" />
+                    @Html.ValidationMessageFor(model => model.U_email, "", new { @class = "text-danger" })
+                </label>
+                <label class="right">
+                    <span>Phone Number</span>
+                    <input id="expdate" type="text" name="U_number" />
+                    @Html.ValidationMessageFor(model => model.U_number, "", new { @class = "text-danger" })
+                </label>
+                <label class="right">
+                    <span>Country</span>
+                    <input type="text" name="U_country" />
+                    @Html.ValidationMessageFor(model=>model.U_country, "", new { @class = "text-danger" })
+                </label>
+
+                <label class="left">
+                    <span>Password</span>
+                    <input type="password" name="U_pass" />
+                    @Html.ValidationMessageFor(model=>model.U_pass, "", new { @class = "text-danger" })
+                </label>
+                <button type="submit" class="submit-signup">Sign Up</button>
+                
+                @if (ViewBag.msg != null) { 
+                @Html.Raw("<script>alert('@ViewBag.msg')</script>")
+                }
+            </div>
+            }
+
+
+            
+        </div>
+    </div>
+
+    <a href="https://dribbble.com/shots/3306190-Login-Registration-form" target="_blank" class="icon-link">
+        <img src="http://icons.iconarchive.com/icons/uiconstock/socialmedia/256/Dribbble-icon.png">
+    </a>
+    <a href="https://twitter.com/NikolayTalanov" target="_blank" class="icon-link icon-link--twitter">
+        <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png">
+    </a>
+    <!-- partial -->
+    <script src="~/js/script-l.js"></script>
+
+</body>
+</html>
+
