@@ -1,9 +1,0 @@
-Fonts used in this design:
-
-Font: Nexa
-Author: Fontfabric
-Url: http://www.fontsquirrel.com/fonts/nexa
-
-Font: Milkshake
-Author: Laura Worthington
-Url: https://www.fontsquirrel.com/fonts/milkshake
